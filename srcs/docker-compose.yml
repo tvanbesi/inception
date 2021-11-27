@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+ db:
+  build: ./mariadb
+  container_name: mariadb_inception
+  volumes:
+   - /home/tvanbesi/data/database:/var/lib/mysql
+  restart: always
+
+ wordpress:
+  build: ./wordpress
+  container_name: wordpress_inception
+  volumes:
+   - /home/tvanbesi/data/wordpress:/var/www/html
+  depends_on:
+   - db
+  restart: always
+
+ nginx:
+  build: ./nginx
+  container_name: nginx_inception
+  volumes:
+   - /home/tvanbesi/data/wordpress:/var/www/html
+  ports:
+   - 8080:80
+  depends_on:
+   - wordpress
+  restart: always
