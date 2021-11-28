@@ -1,6 +1,7 @@
 FROM debian:buster
 
-RUN apt update; apt install -y nginx
+RUN	apt-get update > /dev/null; \
+	apt-get install -y bash nginx > /dev/null;
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
