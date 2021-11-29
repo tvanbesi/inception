@@ -1,7 +1,11 @@
 all:	up
 
-up:
+up:		setup
 		cd ./srcs && docker-compose down && docker-compose up -d
+
+#first time setup need sudo privileges `sudo make`
+setup:
+		bash setup.sh
 
 down:
 		cd ./srcs && docker-compose down
