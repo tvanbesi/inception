@@ -4,6 +4,8 @@ services:
  db:
   build: ./mariadb
   container_name: mariadb_inception
+  env_file:
+   - ./.env
   networks:
    - net-db
   volumes:
@@ -13,6 +15,8 @@ services:
  wordpress:
   build: ./wordpress
   container_name: wordpress_inception
+  env_file:
+   - ./.env
   networks:
    - net-db
    - net-php

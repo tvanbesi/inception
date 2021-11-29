@@ -13,6 +13,8 @@ while [ $? -ne 0 ]; do echo "waiting for myql server for setup..."; sleep 1; mys
 
 cat /var/lib/mysql/.mariadb_configured 2> /dev/null;
 if [ $? -ne 0 ]; then
+	sed -i "s/WP_WPUSER_PSWD/${WP_WPUSER_PSWD}/g" /tmp/mysql_config.sql;
+	sed -i "s/WP_ADMIN_PSWD/${WP_ADMIN_PSWD}/g" /tmp/mysql_config.sql;
 	mariadb -u root < /tmp/mysql_config.sql;
 	touch /var/lib/mysql/.mariadb_configured;
 	echo "MARIADB CONFIGURED";

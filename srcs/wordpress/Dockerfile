@@ -8,6 +8,7 @@ RUN	sed -i "s/\/run\/php\/php7.3-fpm.sock/0.0.0.0:9000/g" /etc/php/7.3/fpm/pool.
 
 ADD wordpress-5.8.2.tar.gz /tmp
 COPY wp-config.php /tmp
+
 COPY entrypoint.sh /
 
 VOLUME /var/www/html
