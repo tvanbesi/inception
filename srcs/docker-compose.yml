@@ -30,7 +30,10 @@ services:
   volumes:
    - /home/tvanbesi/data/wordpress:/var/www/html
   ports:
-   - 8080:80
+   - 443:443
+   - 8080:443
+   - 80:443
+#   - 8080:80
   depends_on:
    - wordpress
   restart: always
